@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordBanisher", "WordBanisher.csproj", "{A2571852-DA34-481E-B15E-4A752DF4CB87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2571852-DA34-481E-B15E-4A752DF4CB87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2571852-DA34-481E-B15E-4A752DF4CB87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2571852-DA34-481E-B15E-4A752DF4CB87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2571852-DA34-481E-B15E-4A752DF4CB87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBB8D0A5-8749-4B42-8E84-121A2F4D2ACE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,454 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>WordBanisher</AssemblyName>
+    <Description>My first plugin</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="com.stunlock.console">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.stunlock.console.dll</HintPath>
+    </Reference>
+    <Reference Include="com.stunlock.metrics">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.stunlock.metrics.dll</HintPath>
+    </Reference>
+    <Reference Include="com.stunlock.network">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.stunlock.network.dll</HintPath>
+    </Reference>
+    <Reference Include="com.stunlock.network.lidgren">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.stunlock.network.lidgren.dll</HintPath>
+    </Reference>
+    <Reference Include="com.stunlock.network.steam">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\com.stunlock.network.steam.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMono.Security">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppMono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Configuration">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Data">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Numerics">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime.Serialization">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml.Linq">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Il2CppSystem.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MagicaCloth">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\MagicaCloth.dll</HintPath>
+    </Reference>
+    <Reference Include="Malee.ReorderableList">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Malee.ReorderableList.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Behaviours">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Behaviours.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Camera">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Camera.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.CastleBuilding.Systems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.CastleBuilding.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.CodeGeneration">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Conversion">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Conversion.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Gameplay.Scripting">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Gameplay.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Gameplay.Systems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Gameplay.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.GeneratedNetCode">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.GeneratedNetCode.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.HUD">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.HUD.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Misc.Systems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Misc.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Pathfinding">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Pathfinding.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Presentation.Systems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Presentation.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Roofs">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Roofs.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.ScriptableSystems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.ScriptableSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Shared">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Shared.Systems">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Shared.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjectM.Terrain">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\ProjectM.Terrain.dll</HintPath>
+    </Reference>
+    <Reference Include="RCONServerLib">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\RCONServerLib.dll</HintPath>
+    </Reference>
+    <Reference Include="RootMotion">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\RootMotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Sequencer">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Sequencer.dll</HintPath>
+    </Reference>
+    <Reference Include="Stunlock.Core">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Stunlock.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Stunlock.Fmod">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Stunlock.Fmod.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Deformations">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Deformations.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Entities">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Entities.Hybrid">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Entities.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Jobs">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Jobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Extensions">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Mathematics.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Extensions.Hybrid">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Physics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics.Hybrid">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Physics.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Properties">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rendering.Hybrid">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Rendering.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Scenes">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Scenes.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Serialization">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Analytics">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Configuration">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Device">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Device.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments.Internal">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Environments.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Internal">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Registration">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Scheduler">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Telemetry">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Threading">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Services.Core.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Transforms.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms.Hybrid">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.Transforms.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsNativeModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UIElementsNativeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="VivoxUnity">
+      <HintPath>..\..\VRisingDevelopment\RPGMod-Rebirth\unhollowed\VivoxUnity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy C:\Users\Jason\Desktop\Development\WordBanisher\bin\Debug\netstandard2.1\WordBanisher.dll C:\Users\Jason\Desktop\VRisingDevelopment\VRising_Server\BepInEx\plugins" />
+	</Target>
+</Project>
